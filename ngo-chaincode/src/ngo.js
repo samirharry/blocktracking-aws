@@ -448,56 +448,59 @@ let Chaincode = class {
 
   /************************************************************************************************
    * 
-   * Donor functions 
+   * Asset functions 
    * 
    ************************************************************************************************/
 
    /**
-   * Creates a new donor
+   * Crea un nuevo pedido
    * 
    * @param {*} stub 
    * @param {*} args - JSON as follows:
    * {
-   *    "donorUserName":"edge",
-   *    "email":"edge@abc.com",
-   *    "registeredDate":"2018-10-22T11:52:20.182Z"
+   *    "keyId":"edge",
+   *    "color":"rojo",
+   *    "amount":"10",
+   *    "owner":""
+   *    "prize":"assd" 
+   * 
    * }
    */
-  async createDonor(stub, args) {
-    console.log('============= START : createDonor ===========');
-    console.log('##### createDonor arguments: ' + JSON.stringify(args));
+  async createAsset(stub, args) {
+    console.log('============= Inicio Creación de producto ===========');
+    console.log('##### Crear Pedido argumento: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let key = 'donor' + json['donorUserName'];
-    json['docType'] = 'donor';
+    let key = 'producto' + json['keyId'];
+    json['docType'] = 'producto';
 
-    console.log('##### createDonor payload: ' + JSON.stringify(json));
+    console.log('##### CrearProducto payload: ' + JSON.stringify(json));
 
     // Check if the donor already exists
     let donorQuery = await stub.getState(key);
     if (donorQuery.toString()) {
-      throw new Error('##### createDonor - This donor already exists: ' + json['donorUserName']);
+      throw new Error('##### Crear Producto - Este producto ya está registrado: ' + json['keyId']);
     }
 
     await stub.putState(key, Buffer.from(JSON.stringify(json)));
-    console.log('============= END : createDonor ===========');
+    console.log('============= END : createAsset ===========');
   }
 
   /**
-   * Retrieves a specfic donor
+   * Retrieves a specfic Producto
    * 
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryDonor(stub, args) {
-    console.log('============= START : queryDonor ===========');
-    console.log('##### queryDonor arguments: ' + JSON.stringify(args));
+  async queryAsset(stub, args) {
+    console.log('============= START : queryAsset ===========');
+    console.log('##### queryAsset arguments: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let key = 'donor' + json['donorUserName'];
-    console.log('##### queryDonor key: ' + key);
+    let key = 'producto' + json['keyId'];
+    console.log('##### queryProducto  key: ' + key);
 
     return queryByKey(stub, key);
   }
@@ -508,53 +511,51 @@ let Chaincode = class {
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryAllDonors(stub, args) {
-    console.log('============= START : queryAllDonors ===========');
+  async queryAllAssets(stub, args) {
+    console.log('============= START : Consultar todos los productos ===========');
     console.log('##### queryAllDonors arguments: ' + JSON.stringify(args));
  
-    let queryString = '{"selector": {"docType": "donor"}}';
+    let queryString = '{"selector": {"docType": "producto"}}';
     return queryByString(stub, queryString);
   }
 
   /************************************************************************************************
    * 
-   * NGO functions 
+   * Movimientos functions 
    * 
    ************************************************************************************************/
 
   /**
-   * Creates a new NGO
+   * Creates un nuevo Retail
    * 
    * @param {*} stub 
    * @param {*} args - JSON as follows:
    * {
-   *    "ngoRegistrationNumber":"6322",
-   *    "ngoName":"Pets In Need",
-   *    "ngoDescription":"We help pets in need",
-   *    "address":"1 Pet street",
-   *    "contactNumber":"82372837",
-   *    "contactEmail":"pets@petco.com"
+   *    "retailId":"6322",
+   *    "nombre":"Pets In Need",
+   *    "location":"We help pets in need",
+   *    "RUC":"1 Pet street"
    * }
    */
-  async createNGO(stub, args) {
-    console.log('============= START : createNGO ===========');
-    console.log('##### createNGO arguments: ' + JSON.stringify(args));
+  async createRetail(stub, args) {
+    console.log('============= START : Crear Retail ===========');
+    console.log('##### c arguments: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let key = 'ngo' + json['ngoRegistrationNumber'];
-    json['docType'] = 'ngo';
+    let key = 'retail' + json['retailId'];
+    json['docType'] = 'retail';
 
-    console.log('##### createNGO payload: ' + JSON.stringify(json));
+    console.log('##### createRetail payload: ' + JSON.stringify(json));
 
     // Check if the NGO already exists
     let ngoQuery = await stub.getState(key);
     if (ngoQuery.toString()) {
-      throw new Error('##### createNGO - This NGO already exists: ' + json['ngoRegistrationNumber']);
+      throw new Error('##### createNGO - This NGO already exists: ' + json['retailId']);
     }
 
     await stub.putState(key, Buffer.from(JSON.stringify(json)));
-    console.log('============= END : createNGO ===========');
+    console.log('============= END : createRetail ===========');
   }
 
   /**
@@ -563,14 +564,14 @@ let Chaincode = class {
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryNGO(stub, args) {
-    console.log('============= START : queryNGO ===========');
+  async queryRetail(stub, args) {
+    console.log('============= START : queryRetail ===========');
     console.log('##### queryNGO arguments: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let key = 'ngo' + json['ngoRegistrationNumber'];
-    console.log('##### queryNGO key: ' + key);
+    let key = 'retail' + json['retailId'];
+    console.log('##### query Retail key: ' + key);
 
     return queryByKey(stub, key);
   }
@@ -581,11 +582,11 @@ let Chaincode = class {
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryAllNGOs(stub, args) {
+  async queryAllretails(stub, args) {
     console.log('============= START : queryAllNGOs ===========');
     console.log('##### queryAllNGOs arguments: ' + JSON.stringify(args));
  
-    let queryString = '{"selector": {"docType": "ngo"}}';
+    let queryString = '{"selector": {"docType": "retail"}}';
     return queryByString(stub, queryString);
   }
 
@@ -596,51 +597,51 @@ let Chaincode = class {
    ************************************************************************************************/
 
   /**
-   * Creates a new Donation
+   * Creates a new transaction
    * 
    * @param {*} stub 
    * @param {*} args - JSON as follows:
    * {
-   *    "donationId":"2211",
-   *    "donationAmount":100,
-   *    "donationDate":"2018-09-20T12:41:59.582Z",
-   *    "donorUserName":"edge",
-   *    "ngoRegistrationNumber":"6322"
+   *    "activityId":"2211",
+   *    "lugar":100,
+   *    "activDate":"2018-09-20T12:41:59.582Z",
+   *    "keyId":"edge",
+   *    "retailId":"6322"
    * }
    */
-  async createDonation(stub, args) {
+  async createActivity(stub, args) {
     console.log('============= START : createDonation ===========');
-    console.log('##### createDonation arguments: ' + JSON.stringify(args));
+    console.log('##### createDon arguments: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let key = 'donation' + json['donationId'];
-    json['docType'] = 'donation';
+    let key = 'activity' + json['activityId'];
+    json['docType'] = 'activity';
 
-    console.log('##### createDonation donation: ' + JSON.stringify(json));
+    console.log('##### Create Activity Actividad: ' + JSON.stringify(json));
 
     // Confirm the NGO exists
-    let ngoKey = 'ngo' + json['ngoRegistrationNumber'];
+    let ngoKey = 'retail' + json['retailId'];
     let ngoQuery = await stub.getState(ngoKey);
     if (!ngoQuery.toString()) {
-      throw new Error('##### createDonation - Cannot create donation as the NGO does not exist: ' + json['ngoRegistrationNumber']);
+      throw new Error('##### createActivity - Cannot create activity as the retial does not exist: ' + json['retailId']);
     }
 
     // Confirm the donor exists
-    let donorKey = 'donor' + json['donorUserName'];
+    let donorKey = 'product' + json['keyId'];
     let donorQuery = await stub.getState(donorKey);
     if (!donorQuery.toString()) {
-      throw new Error('##### createDonation - Cannot create donation as the Donor does not exist: ' + json['donorUserName']);
+      throw new Error('##### createAsset - Cannot create donation as the Donor does not exist: ' + json['keyId']);
     }
 
     // Check if the Donation already exists
     let donationQuery = await stub.getState(key);
     if (donationQuery.toString()) {
-      throw new Error('##### createDonation - This Donation already exists: ' + json['donationId']);
+      throw new Error('##### createDonation - This Donation already exists: ' + json['activityId']);
     }
 
     await stub.putState(key, Buffer.from(JSON.stringify(json)));
-    console.log('============= END : createDonation ===========');
+    console.log('============= END : Activity ===========');
   }
 
   /**
@@ -649,46 +650,46 @@ let Chaincode = class {
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryDonation(stub, args) {
-    console.log('============= START : queryDonation ===========');
+  async queryactivity(stub, args) {
+    console.log('============= START : queryActivity ===========');
     console.log('##### queryDonation arguments: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let key = 'donation' + json['donationId'];
+    let key = 'activity' + json['activityId'];
     console.log('##### queryDonation key: ' + key);
     return queryByKey(stub, key);
   }
 
   /**
-   * Retrieves donations for a specfic donor
+   * Retrieves activities for a specfic product
    * 
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryDonationsForDonor(stub, args) {
+  async queryactivityForProduct(stub, args) {
     console.log('============= START : queryDonationsForDonor ===========');
     console.log('##### queryDonationsForDonor arguments: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let queryString = '{"selector": {"docType": "donation", "donorUserName": "' + json['donorUserName'] + '"}}';
+    let queryString = '{"selector": {"docType": "activity", "keyId": "' + json['keyId'] + '"}}';
     return queryByString(stub, queryString);
   }
 
   /**
-   * Retrieves donations for a specfic ngo
+   * Retrieves donations for a specfic retail
    * 
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryDonationsForNGO(stub, args) {
-    console.log('============= START : queryDonationsForNGO ===========');
+  async querActivityForRetail(stub, args) {
+    console.log('============= START : queryactivitiesForRetail ===========');
     console.log('##### queryDonationsForNGO arguments: ' + JSON.stringify(args));
 
     // args is passed as a JSON string
     let json = JSON.parse(args);
-    let queryString = '{"selector": {"docType": "donation", "ngoRegistrationNumber": "' + json['ngoRegistrationNumber'] + '"}}';
+    let queryString = '{"selector": {"docType": "activity", "retailId": "' + json['retailId'] + '"}}';
     return queryByString(stub, queryString);
   }
 
@@ -698,10 +699,10 @@ let Chaincode = class {
    * @param {*} stub 
    * @param {*} args 
    */
-  async queryAllDonations(stub, args) {
-    console.log('============= START : queryAllDonations ===========');
+  async queryAllActivities(stub, args) {
+    console.log('============= START : queryAllactivities ===========');
     console.log('##### queryAllDonations arguments: ' + JSON.stringify(args)); 
-    let queryString = '{"selector": {"docType": "donation"}}';
+    let queryString = '{"selector": {"docType": "activity"}}';
     return queryByString(stub, queryString);
   }
 
