@@ -144,29 +144,29 @@ app.post('/users', awaitHandler(async (req, res) => {
  ************************************************************************************/
 
 // GET Donor
-app.get('/donors', awaitHandler(async (req, res) => {
+app.get('/assets', awaitHandler(async (req, res) => {
 	logger.info('================ GET on Donor');
 	let args = {};
-	let fcn = "queryAllDonors";
+	let fcn = "queryAllAssets";
 
-    logger.info('##### GET on Donor - username : ' + username);
-	logger.info('##### GET on Donor - userOrg : ' + orgName);
-	logger.info('##### GET on Donor - channelName : ' + channelName);
-	logger.info('##### GET on Donor - chaincodeName : ' + chaincodeName);
-	logger.info('##### GET on Donor - fcn : ' + fcn);
-	logger.info('##### GET on Donor - args : ' + JSON.stringify(args));
-	logger.info('##### GET on Donor - peers : ' + peers);
+    logger.info('##### GET on Asset - username : ' + username);
+	logger.info('##### GET on Asset - userOrg : ' + orgName);
+	logger.info('##### GET on Asset - channelName : ' + channelName);
+	logger.info('##### GET on Asset - chaincodeName : ' + chaincodeName);
+	logger.info('##### GET on Asset - fcn : ' + fcn);
+	logger.info('##### GET on Asset - args : ' + JSON.stringify(args));
+	logger.info('##### GET on Asset - peers : ' + peers);
 
     let message = await query.queryChaincode(peers, channelName, chaincodeName, args, fcn, username, orgName);
  	res.send(message);
 }));
 
 // GET a specific Donor
-app.get('/donors/:donorUserName', awaitHandler(async (req, res) => {
-	logger.info('================ GET on Donor by ID');
+app.get('/assets/:keyId', awaitHandler(async (req, res) => {
+	logger.info('================ GET an asset by ID');
 	logger.info('Donor username : ' + req.params);
 	let args = req.params;
-	let fcn = "queryDonor";
+	let fcn = "queryAsset";
 
     logger.info('##### GET on Donor by username - username : ' + username);
 	logger.info('##### GET on Donor by username - userOrg : ' + orgName);
@@ -181,11 +181,11 @@ app.get('/donors/:donorUserName', awaitHandler(async (req, res) => {
 }));
 
 // GET the Donations for a specific Donor
-app.get('/donors/:donorUserName/donations', awaitHandler(async (req, res) => {
+app.get('/assets/:keyId/activities', awaitHandler(async (req, res) => {
 	logger.info('================ GET on Donations for Donor');
 	logger.info('Donor username : ' + req.params);
 	let args = req.params;
-	let fcn = "queryDonationsForDonor";
+	let fcn = "queryactivityForProduct";
 
     logger.info('##### GET on Donations for Donor - username : ' + username);
 	logger.info('##### GET on Donations for Donor - userOrg : ' + orgName);
@@ -200,10 +200,10 @@ app.get('/donors/:donorUserName/donations', awaitHandler(async (req, res) => {
 }));
 
 // POST Donor
-app.post('/donors', awaitHandler(async (req, res) => {
+app.post('/assets', awaitHandler(async (req, res) => {
 	logger.info('================ POST on Donor');
 	var args = req.body;
-	var fcn = "createDonor";
+	var fcn = "createAsset";
 
     logger.info('##### POST on Donor - username : ' + username);
 	logger.info('##### POST on Donor - userOrg : ' + orgName);
@@ -222,10 +222,10 @@ app.post('/donors', awaitHandler(async (req, res) => {
  ************************************************************************************/
 
 // GET NGO
-app.get('/ngos', awaitHandler(async (req, res) => {
+app.get('/retails', awaitHandler(async (req, res) => {
 	logger.info('================ GET on NGO');
 	let args = {};
-	let fcn = "queryAllNGOs";
+	let fcn = "queryAllretails";
 
     logger.info('##### GET on NGO - username : ' + username);
 	logger.info('##### GET on NGO - userOrg : ' + orgName);
@@ -240,11 +240,11 @@ app.get('/ngos', awaitHandler(async (req, res) => {
 }));
 
 // GET a specific NGO
-app.get('/ngos/:ngoRegistrationNumber', awaitHandler(async (req, res) => {
+app.get('/retails/:retailId', awaitHandler(async (req, res) => {
 	logger.info('================ GET on NGO by ID');
-	logger.info('NGO ngoRegistrationNumber : ' + req.params);
+	logger.info('NGO retailId : ' + req.params);
 	let args = req.params;
-	let fcn = "queryNGO";
+	let fcn = "queryRetail";
 
     logger.info('##### GET on NGO - username : ' + username);
 	logger.info('##### GET on NGO - userOrg : ' + orgName);
@@ -259,11 +259,11 @@ app.get('/ngos/:ngoRegistrationNumber', awaitHandler(async (req, res) => {
 }));
 
 // GET the Donations for a specific NGO
-app.get('/ngos/:ngoRegistrationNumber/donations', awaitHandler(async (req, res) => {
+app.get('/retails/:retailId/activities', awaitHandler(async (req, res) => {
 	logger.info('================ GET on Donations for NGO');
 	logger.info('NGO ngoRegistrationNumber : ' + req.params);
 	let args = req.params;
-	let fcn = "queryDonationsForNGO";
+	let fcn = "querActivityForRetail";
 
     logger.info('##### GET on Donations for NGO - username : ' + username);
 	logger.info('##### GET on Donations for NGO - userOrg : ' + orgName);
@@ -316,10 +316,10 @@ app.get('/ngos/:ngoRegistrationNumber/ratings', awaitHandler(async (req, res) =>
 }));
 
 // POST NGO
-app.post('/ngos', awaitHandler(async (req, res) => {
+app.post('/retails', awaitHandler(async (req, res) => {
 	logger.info('================ POST on NGO');
 	var args = req.body;
-	var fcn = "createNGO";
+	var fcn = "createRetail";
 
     logger.info('##### POST on NGO - username : ' + username);
 	logger.info('##### POST on NGO - userOrg : ' + orgName);
@@ -338,10 +338,10 @@ app.post('/ngos', awaitHandler(async (req, res) => {
  ************************************************************************************/
 
 // GET Donation
-app.get('/donations', awaitHandler(async (req, res) => {
+app.get('/activities', awaitHandler(async (req, res) => {
 	logger.info('================ GET on Donation');
 	let args = {};
-	let fcn = "queryAllDonations";
+	let fcn = "queryAllActivities";
 
     logger.info('##### GET on Donation - username : ' + username);
 	logger.info('##### GET on Donation - userOrg : ' + orgName);
@@ -356,11 +356,11 @@ app.get('/donations', awaitHandler(async (req, res) => {
 }));
 
 // GET a specific Donation
-app.get('/donations/:donationId', awaitHandler(async (req, res) => {
+app.get('/activities/:activityId', awaitHandler(async (req, res) => {
 	logger.info('================ GET on Donation by ID');
 	logger.info('Donation ID : ' + req.params);
 	let args = req.params;
-	let fcn = "queryDonation";
+	let fcn = "queryactivity";
 
     logger.info('##### GET on Donation - username : ' + username);
 	logger.info('##### GET on Donation - userOrg : ' + orgName);
@@ -394,10 +394,10 @@ app.get('/donations/:donationId/spendallocations', awaitHandler(async (req, res)
 }));
 
 // POST Donation
-app.post('/donations', awaitHandler(async (req, res) => {
+app.post('/activity', awaitHandler(async (req, res) => {
 	logger.info('================ POST on Donation');
 	var args = req.body;
-	var fcn = "createDonation";
+	var fcn = "createActivity";
 
     logger.info('##### POST on Donation - username : ' + username);
 	logger.info('##### POST on Donation - userOrg : ' + orgName);
