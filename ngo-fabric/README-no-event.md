@@ -37,7 +37,7 @@ In your Cloud9 terminal window:
 
 ```
 export REGION=us-east-1
-export STACKNAME=non-profit-amb
+export STACKNAME=blocktracking-aws-amb
 cd ~/blocktracking-aws/ngo-fabric
 ./amb.sh
 ```
