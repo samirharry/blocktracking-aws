@@ -31,7 +31,7 @@ will print out the values of the key ENV variables. Make sure they are all popul
 they are not, follow Step 4 in [Part 1](../ngo-fabric/README.md) to repopulate them:
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 source fabric-exports.sh
 ```
 
@@ -62,7 +62,7 @@ On the Fabric client node.
 If you are upgrading from v1.2, you may need to remove the existing node_module: `rm -rf node_modules`
 
 ```
-cd ~/non-profit-blockchain/ngo-rest-api
+cd ~/blocktracking-aws/ngo-rest-api
 npm install
 ```
 
@@ -76,12 +76,12 @@ Fabric network. The instructions below will auto-generate a connection profile.
 Generate the connection profile using the script below and check that the connection profile contains 
 URL endpoints for the peer, ordering service and CA, an 'mspid', a 'caName', and that the admin username and password
 match those you entered when creating the Fabric network. If they do not match, edit the connection profile
-and update them. The connection profile can be found here: `~/non-profit-blockchain/tmp/connection-profile/ngo-connection-profile.yaml`
+and update them. The connection profile can be found here: `~/blocktracking-aws/tmp/connection-profile/ngo-connection-profile.yaml`
 
 ```
-cd ~/non-profit-blockchain/ngo-rest-api/connection-profile
+cd ~/blocktracking-aws/ngo-rest-api/connection-profile
 ./gen-connection-profile.sh
-cd ~/non-profit-blockchain/tmp/connection-profile/
+cd ~/blocktracking-aws/tmp/connection-profile/
 cat ngo-connection-profile.yaml
 ```
 
@@ -91,7 +91,7 @@ On the Fabric client node.
 Run the app:
 
 ```
-cd ~/non-profit-blockchain/ngo-rest-api
+cd ~/blocktracking-aws/ngo-rest-api
 nvm use 14
 node app.js 
 ```
@@ -171,7 +171,7 @@ this, remember to rerun the statements under Pre-requisites above.
 To run the script:
 
 ```
-cd ~/non-profit-blockchain/ngo-rest-api
+cd ~/blocktracking-aws/ngo-rest-api
 ./ngo-load-workshop.sh
 ```
 

@@ -31,7 +31,7 @@ will print out the values of the key ENV variables. Make sure they are all popul
 they are not, follow Step 4 in [Part 1](../ngo-fabric/README.md) to repopulate them.
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 source fabric-exports.sh
 source ~/peer-exports.sh 
 ```
@@ -53,7 +53,7 @@ chaincode into this folder will make it accessible inside the Fabric CLI contain
 ```
 cd ~
 mkdir -p ./fabric-samples/chaincode/ngo
-cp ./non-profit-blockchain/ngo-chaincode/src/* ./fabric-samples/chaincode/ngo
+cp ./blocktracking-aws/ngo-chaincode/src/* ./fabric-samples/chaincode/ngo
 ```
 
 ## Step 2 - Install the chaincode on your peer

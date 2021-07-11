@@ -77,7 +77,7 @@ In Cloud9:
 
 ```
 export REGION=us-east-1
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 ./vpc-client-node.sh
 ```
 
@@ -121,7 +121,7 @@ to your current session. If you exit the SSH session and re-connect, you'll need
 
 ```
 export REGION=us-east-1
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 cp templates/exports-template.sh fabric-exports.sh
 source fabric-exports.sh
 source ~/peer-exports.sh 
@@ -169,7 +169,7 @@ Some final copying of the certificates is necessary:
 ```
 mkdir -p /home/ec2-user/admin-msp/admincerts
 cp ~/admin-msp/signcerts/* ~/admin-msp/admincerts/
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 ```
 
 ## Step 5 - Update the configtx channel configuration
@@ -178,7 +178,7 @@ On the Fabric client node.
 Update the configtx channel configuration. The Name and ID fields should be updated with the member ID from Managed Blockchain.
 
 ```
-cp ~/non-profit-blockchain/ngo-fabric/configtx.yaml ~
+cp ~/blocktracking-aws/ngo-fabric/configtx.yaml ~
 sed -i "s|__MEMBERID__|$MEMBERID|g" ~/configtx.yaml
 ```
 

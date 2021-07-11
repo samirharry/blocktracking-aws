@@ -70,7 +70,7 @@ will print out the values of the key ENV variables. Make sure they are all popul
 they are not, follow Step 4 in [Part 1](../ngo-fabric/README.md) to repopulate them:
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 source fabric-exports.sh
 ```
 
@@ -157,7 +157,7 @@ will check whether the keypair exists before creating it. I don't want to overwr
 keypairs you have, so just ignore this error and let the script continue:
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 ./vpc-client-node.sh
 ```
 
@@ -193,7 +193,7 @@ git clone https://github.com/samirharry/blocktracking-aws.git
 Create the file that includes the ENV export values that define your Fabric network configuration.
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 cp templates/exports-template.sh fabric-exports.sh
 vi fabric-exports.sh
 ```
@@ -206,7 +206,7 @@ Source the file, so the exports are applied to your current session. If you exit
 session and re-connect, you'll need to source the file again.
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 source fabric-exports.sh
 ```
 
@@ -559,7 +559,7 @@ ls -lt /home/ec2-user/fabric-samples/chaincode/hyperledger/fabric/peer
 We will use a bash script to create an updated channel config since the process involves quite a few steps. We need to execute the bash script in the CLI container, so we copy it to the home directory on the Fabric client node, as this is mounted into the CLI container.
 
 ```
-cd ~/non-profit-blockchain/new-member
+cd ~/blocktracking-aws/new-member
 cp create-config-update.sh ~
 ```
 

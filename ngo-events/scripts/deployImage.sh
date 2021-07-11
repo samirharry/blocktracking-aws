@@ -14,7 +14,7 @@
 # permissions and limitations under the License.
 
 REGION=us-east-1
-ROOT_FOLDER=~/non-profit-blockchain/ngo-events/
+ROOT_FOLDER=~/blocktracking-aws/ngo-events/
 CHAINCODE=ngo
 STACKNAME=event-listener-ecr-image
 TEMPLATEFILE=$ROOT_FOLDER/templates/ecrImage.yaml

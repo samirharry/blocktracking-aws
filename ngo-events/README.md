@@ -36,7 +36,7 @@ will print out the values of the key ENV variables. Make sure they are all popul
 they are not, follow Step 4 in [Part 1](../ngo-fabric/README.md) to repopulate them:
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 source fabric-exports.sh
 source ~/peer-exports.sh 
 ```
@@ -83,7 +83,7 @@ On the Fabric client node.
 The listener will need to connect to the peer node to listen for events.  Execute this script to create a Fabric user called `listenerUser` that will be used by the listener.
 
 ```
-~/non-profit-blockchain/ngo-events/scripts/createFabricUser.sh
+~/blocktracking-aws/ngo-events/scripts/createFabricUser.sh
 ```
 
 ## Step 2 - Upload a Docker image of the listener to ECR
@@ -92,7 +92,7 @@ In this step we create a Docker image of the Node.js event listener and upload t
 Create and upload the image to ECR by running the script:
 
 ```
-~/non-profit-blockchain/ngo-events/scripts/deployImage.sh
+~/blocktracking-aws/ngo-events/scripts/deployImage.sh
 ```
 
 ## Steps 3-5 - Create a private subnet, the SQS queue and ECS cluster
@@ -101,7 +101,7 @@ The VPC created in [Part 1](../ngo-fabric/README.md) contains a public subnet, b
 Create all the components by running the script: 
 
 ```
-~/non-profit-blockchain/ngo-events/scripts/deployListener.sh
+~/blocktracking-aws/ngo-events/scripts/deployListener.sh
 ```
 
 We now have a listener running as a Fargate task that is listening for blockchain events and publishing every event to SQS. This allows us to handle these events using a Lambda function. We could also invoke other AWS services from the Lambda function, for example, we could write the blockchain event data to DynamoDB or S3 to deliver faster query times and drive Amazon Quicksight dashboards.  In this workshop, we'll use SNS to send an SMS notifying the recipient of the new donation.  
@@ -116,14 +116,14 @@ export PHONENUMBER=<your mobile number>
 Create the SNS subscription and Lambda function by running the script: 
 
 ```
-~/non-profit-blockchain/ngo-events/scripts/deployHandler.sh
+~/blocktracking-aws/ngo-events/scripts/deployHandler.sh
 ```
 
 ## Step 8 - upgrade the NGO chaincode
 The final step is to update the NGO chaincode by adding the chaincode event. Copy the chaincode to the directory where the Fabric CLI container expects to find the chaincode source code.
 
 ```
-cp ~/non-profit-blockchain/ngo-events/chaincode/src/* ~/fabric-samples/chaincode/ngo
+cp ~/blocktracking-aws/ngo-events/chaincode/src/* ~/fabric-samples/chaincode/ngo
 ```
 
 Install the chaincode on the peer node.

@@ -40,7 +40,7 @@ will print out the values of the key ENV variables. Make sure they are all popul
 they are not, follow Step 4 in [Part 1](../ngo-fabric/README.md) to repopulate them:
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 source fabric-exports.sh
 source ~/peer-exports.sh 
 ```
@@ -96,7 +96,7 @@ On the Fabric client node.
 On our Certificate Authority, we will create two users, one for the donor, and one for the manager.  Execute this script to create these users called `ngoDonor` and `ngoManager`.
 
 ```
-~/non-profit-blockchain/ngo-identity/scripts/createFabricUsers.sh
+~/blocktracking-aws/ngo-identity/scripts/createFabricUsers.sh
 ```
 
 Within this script, we define various attributes on the users' certificates. These attributes are available within the smart contract and can be used to enforce attribute-based access.  You can find more detail on creating Fabric users in the [Fabric documentation](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client).
@@ -117,7 +117,7 @@ In this step we deploy the Cognito User Pool, and API Gateway routes that requir
 Create these assets by running the script (this will take a few minutes):
 
 ```
-~/non-profit-blockchain/ngo-identity/scripts/deployCognitoAPIGatewayRoutes.sh
+~/blocktracking-aws/ngo-identity/scripts/deployCognitoAPIGatewayRoutes.sh
 ```
 
 ## Step 4 - Create users in the Cognito User Pool
@@ -126,14 +126,14 @@ In this step we create two users within the Cognito user pool.  One user represe
 Create the users by running the script: 
 
 ```
-~/non-profit-blockchain/ngo-identity/scripts/createCognitoUsers.sh
+~/blocktracking-aws/ngo-identity/scripts/createCognitoUsers.sh
 ```
 
 ## Step 5 - Upgrade the NGO chaincode
 The final step is to upgrade the NGO chaincode with the new methods we will need to support our application. Copy the chaincode to the directory where the Fabric CLI container expects to find the chaincode source code.
 
 ```
-cp ~/non-profit-blockchain/ngo-identity/chaincode/src/* ~/fabric-samples/chaincode/ngo
+cp ~/blocktracking-aws/ngo-identity/chaincode/src/* ~/fabric-samples/chaincode/ngo
 ```
 
 Install the chaincode on the peer node.

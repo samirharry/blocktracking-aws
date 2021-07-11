@@ -55,7 +55,7 @@ nvm use 14
 ## Step 2 - Install dependencies
 
 ```
-cd ~/non-profit-blockchain/ngo-ui
+cd ~/blocktracking-aws/ngo-ui
 npm i
 ```
 
@@ -76,7 +76,7 @@ sed -i "s|__ELBURL__|$ELBURL|g" src/environments/environment.ts
 ## Step 4 - Start the application
 
 ```
-cd ~/non-profit-blockchain/ngo-ui
+cd ~/blocktracking-aws/ngo-ui
 nvm use 14
 npm start &
 ```
@@ -147,14 +147,14 @@ npm install pm2 -g
 For Cloud9:
 
 ```
-cd ~/non-profit-blockchain/ngo-ui
+cd ~/blocktracking-aws/ngo-ui
 pm2 start npm -- start
 ```
 
 For the Fabric client node:
 
 ```
-cd ~/non-profit-blockchain/ngo-rest-api
+cd ~/blocktracking-aws/ngo-rest-api
 pm2 start app.js
 ```
 

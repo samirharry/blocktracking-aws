@@ -19,7 +19,7 @@
 REGION=us-east-1
 LISTENER_STACKNAME=fabric-event-listener
 STACKNAME=fabric-event-handler
-ROOT_FOLDER=~/non-profit-blockchain/ngo-events/
+ROOT_FOLDER=~/blocktracking-aws/ngo-events/
 TEMPLATEFILE=$ROOT_FOLDER/templates/eventHandler.yaml
 SQS_QUEUE_ARN=$(aws cloudformation describe-stacks --stack-name $LISTENER_STACKNAME --query "Stacks[0].Outputs[?OutputKey=='SQSQUEUEARN'].OutputValue" --output text --region $REGION)
 

@@ -68,7 +68,7 @@ will print out the values of the key ENV variables. Make sure they are all popul
 they are not, follow step 4 in [Part 1](../ngo-fabric/README.md) to repopulate them.
 
 ```
-cd ~/non-profit-blockchain/ngo-fabric
+cd ~/blocktracking-aws/ngo-fabric
 source fabric-exports.sh
 source ~/peer-exports.sh 
 ```
@@ -128,7 +128,7 @@ git status
 We will use CloudFormation to create our PostgreSQL RDS instance. We want the RDS instance in the same VPC as the Fabric client node.
 
 ```
-cd ~/non-profit-blockchain/blockchain-explorer
+cd ~/blocktracking-aws/blockchain-explorer
 ./hyperledger-explorer-rds.sh
 ```
 
@@ -151,7 +151,7 @@ Let's update the config automatically using the statements below. We will query 
 export REGION=us-east-1
 export FABRICSTACK=$NETWORKNAME-hyperledger-explorer-rds
 export RDSHOST=$(aws cloudformation --region $REGION describe-stacks --stack-name $FABRICSTACK --query "Stacks[0].Outputs[?OutputKey=='RDSHost'].OutputValue" --output text)
-cp ~/non-profit-blockchain/blockchain-explorer/explorerconfig.json ~/blockchain-explorer/app/explorerconfig.json
+cp ~/blocktracking-aws/blockchain-explorer/explorerconfig.json ~/blockchain-explorer/app/explorerconfig.json
 sed -i "s|%RDSHOST%|$RDSHOST|g" ~/blockchain-explorer/app/explorerconfig.json
 cat ~/blockchain-explorer/app/explorerconfig.json
 ```
@@ -159,7 +159,7 @@ cat ~/blockchain-explorer/app/explorerconfig.json
 Replace the contents of the table creation script:
 
 ```
-cp ~/non-profit-blockchain/blockchain-explorer/createdb.sh ~/blockchain-explorer/app/persistence/fabric/postgreSQL/db/createdb.sh
+cp ~/blocktracking-aws/blockchain-explorer/createdb.sh ~/blockchain-explorer/app/persistence/fabric/postgreSQL/db/createdb.sh
 ```
 
 Now create the database tables. You will need to enter the password for the 'master' user. The password can be found in  'explorerconfig.json', the file we updated a minute ago; it will also be printed out for you when you execute the command below. You will need to enter this password for two different steps, and you'll need to type it, not copy and paste:
@@ -186,7 +186,7 @@ Fabric uses a discovery service to discover details of the Fabric network, and E
 * If you have a multi-member Fabric network, you must configure anchor peers for the member(s), otherwise the Fabric discovery service will be unable to discover peers belonging to other members. See the pre-requisites section at the top of this page for more details.
 
 ```
-cd ~/non-profit-blockchain/blockchain-explorer/connection-profile
+cd ~/blocktracking-aws/blockchain-explorer/connection-profile
 ./gen-connection-profile.sh
 more ~/blockchain-explorer/app/platform/fabric/amb-network.json
 ```

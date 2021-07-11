@@ -14,7 +14,7 @@
 # permissions and limitations under the License.
 
 REGION=us-east-1
-PROJECT_ROOT_FOLDER=~/non-profit-blockchain/ngo-identity
+PROJECT_ROOT_FOLDER=~/blocktracking-aws/ngo-identity
 CLOUDFORMATION_TEMPLATE=${PROJECT_ROOT_FOLDER}/templates/cognito-apigateway-routes-template.yaml
 
 echo Deploying the Cloudformation stack

@@ -16,7 +16,7 @@
 REGION=us-east-1
 AZ=us-east-1d
 STACKNAME=private-subnet
-ROOT_FOLDER=~/non-profit-blockchain/ngo-events/
+ROOT_FOLDER=~/blocktracking-aws/ngo-events/
 TEMPLATEFILE=$ROOT_FOLDER/templates/privateSubnet.yaml
 VPC_STACK_NAME=$NETWORKNAME-fabric-client-node
 VPCID=$(aws cloudformation describe-stacks --stack-name $VPC_STACK_NAME --query "Stacks[0].Outputs[?OutputKey=='VPCID'].OutputValue" --output text --region $REGION)
