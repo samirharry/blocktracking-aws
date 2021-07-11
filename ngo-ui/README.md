@@ -34,7 +34,7 @@ You should have already cloned this repo in [Part 1](../ngo-fabric/README.md)
 
 ```
 cd ~
-git clone https://github.com/aws-samples/non-profit-blockchain.git
+git clone https://github.com/samirharry/blocktracking-aws.git
 ```
 
 ## Step 1 - Install Node

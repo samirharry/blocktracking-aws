@@ -60,7 +60,7 @@ Clone this repo, which contains the chaincode:
 
 ```
 cd ~
-git clone https://github.com/aws-samples/non-profit-blockchain.git
+git clone https://github.com/samirharry/blocktracking-aws.git
 ```
 
 In your terminal window, change to the directory containing the chaincode:

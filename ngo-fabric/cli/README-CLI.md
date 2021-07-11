@@ -14,7 +14,7 @@ In the Cloud9 console, click 'Create Environment'
 
 ```
 cd
-git clone https://github.com/aws-samples/non-profit-blockchain.git
+git clone https://github.com/samirharry/blocktracking-aws.git
 ```
 
 ## Step 0 - in Cloud9
@@ -79,7 +79,7 @@ Clone the repo:
 
 ```
 cd
-git clone https://github.com/aws-samples/non-profit-blockchain.git
+git clone https://github.com/samirharry/blocktracking-aws.git
 ```
 
 Execute the following script:

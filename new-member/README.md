@@ -58,7 +58,7 @@ You should have already cloned this repo in [Part 1](../ngo-fabric/README.md)
 
 ```
 cd ~
-git clone https://github.com/aws-samples/non-profit-blockchain.git
+git clone https://github.com/samirharry/blocktracking-aws.git
 ```
 
 You will need to set the context before carrying out any Fabric CLI commands. We do this 
@@ -97,7 +97,7 @@ In the Cloud9 console, click 'Create Environment'. Using 'us-east-1' for the reg
 
 ```
 cd ~
-git clone https://github.com/aws-samples/non-profit-blockchain.git
+git clone https://github.com/samirharry/blocktracking-aws.git
 ```
 
 Update your AWS CLI to the latest version.
@@ -187,7 +187,7 @@ Clone the repo:
 
 ```
 cd ~
-git clone https://github.com/aws-samples/non-profit-blockchain.git
+git clone https://github.com/samirharry/blocktracking-aws.git
 ```
 
 Create the file that includes the ENV export values that define your Fabric network configuration.
