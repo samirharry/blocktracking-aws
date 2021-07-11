@@ -606,7 +606,7 @@ let Chaincode = class {
    *    "lugar":100,
    *    "activDate":"2018-09-20T12:41:59.582Z",
    *    "keyId":"edge",
-   *    "retailId":"6322"
+   *    "retailId":"6322" 
    * }
    */
   async createActivity(stub, args) {

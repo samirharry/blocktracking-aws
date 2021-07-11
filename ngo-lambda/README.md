@@ -60,7 +60,7 @@ export FABRICUSERPASSWORD=Welcome123
 Execute this script to register and enroll the Fabric user, and upload the credentials to AWS Secrets Manager.
 
 ```
-~/non-profit-blockchain/ngo-lambda/createFabricUser.sh
+~/blocktracking-aws/ngo-lambda/createFabricUser.sh
 ```
 
 ## Step 2 - Deploy the Lambda function and API Gateway
@@ -72,9 +72,9 @@ We will also need to create a new VPC Endpoint to allow the VPC hosting our Lamb
 Execute the following commands to create the Lambda function, VPC Endpoint and the API Gateway. CloudFormation will be used to create these resources. This script will create an S3 bucket to store the Lambda artifacts, and this bucket must be globally unique.  Modify the value of `BUCKETNAME` if you need to make it globally unique.
 
 ```
-export BUCKETNAME=`echo "ngo-fabric-lambda-$(date +%N)" | tr '[:upper:]' '[:lower:]'`
+export BUCKETNAME=`echo "blocktracking-fabric-lambda-$(date +%N)" | tr '[:upper:]' '[:lower:]'`
 export LAMBDANAME=`echo "$NETWORKNAME-fabric-lambda" | tr '[:upper:]' '[:lower:]'`
-~/non-profit-blockchain/ngo-lambda/createLambda.sh
+~/blocktracking-aws/ngo-lambda/createLambda.sh
 ```
 
 If this is successful you should see a message indicating:
