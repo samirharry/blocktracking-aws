@@ -628,7 +628,7 @@ let Chaincode = class {
     }
 
     // Confirm the donor exists
-    let donorKey = 'product' + json['keyId'];
+    let donorKey = 'producto' + json['keyId'];
     let donorQuery = await stub.getState(donorKey);
     if (!donorQuery.toString()) {
       throw new Error('##### createAsset - Cannot create donation as the Donor does not exist: ' + json['keyId']);
@@ -662,7 +662,7 @@ let Chaincode = class {
   }
 
   /**
-   * Retrieves activities for a specfic product
+   * Retrieves activities for a specfic producto
    * 
    * @param {*} stub 
    * @param {*} args 
