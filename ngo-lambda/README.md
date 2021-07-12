@@ -53,7 +53,7 @@ Register and enroll an identity with the Fabric Certificate Authority (CA). You 
 Set environment variables for the username and password of the Fabric user you will be creating.
 
 ```
-export FABRICUSER=lambdaUser
+export FABRICUSER=lambdaUserBlocktracking
 export FABRICUSERPASSWORD=Welcome123
 ```
 
