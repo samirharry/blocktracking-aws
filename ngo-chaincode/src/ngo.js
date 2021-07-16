@@ -486,6 +486,27 @@ let Chaincode = class {
     await stub.putState(key, Buffer.from(JSON.stringify(json)));
     console.log('============= END : createAsset ===========');
   }
+ 
+  async modifyAsset(stub, args) {
+    console.log('============= Inicio Creación de producto ===========');
+    console.log('##### Modificacion Pedido : ' + JSON.stringify(args));
+
+    // args is passed as a JSON string
+    let json = JSON.parse(args);
+    let key = 'producto' + json['keyId'];
+    json['docType'] = 'producto';
+
+    console.log('##### CrearProducto payload: ' + JSON.stringify(json));
+
+    // Check if the donor already exists
+    let donorQuery = await stub.getState(key);
+    if (!donorQuery.toString()) {
+      throw new Error('##### Modificar Producto - Este producto no está registrado: ' + json['keyId']);
+    }
+
+    await stub.putState(key, Buffer.from(JSON.stringify(json)));
+    console.log('============= END : createAsset ===========');
+  }
 
   /**
    * Retrieves a specfic Producto
@@ -556,6 +577,26 @@ let Chaincode = class {
 
     await stub.putState(key, Buffer.from(JSON.stringify(json)));
     console.log('============= END : createRetail ===========');
+  }
+  async modifyRetail(stub, args) {
+    console.log('============= Inicio Creación de producto ===========');
+    console.log('##### Modificacion Pedido : ' + JSON.stringify(args));
+
+    // args is passed as a JSON string
+    let json = JSON.parse(args);
+    let key = 'retail' + json['retailId'];
+    json['docType'] = 'retail';
+
+    console.log('##### CrearProducto payload: ' + JSON.stringify(json));
+
+    // Check if the donor already exists
+    let donorQuery = await stub.getState(key);
+    if (!donorQuery.toString()) {
+      throw new Error('##### Modificar Producto - Este Retail no está registrado: ' + json['retail']);
+    }
+
+    await stub.putState(key, Buffer.from(JSON.stringify(json)));
+    console.log('============= END : createAsset ===========');
   }
 
   /**
@@ -643,7 +684,26 @@ let Chaincode = class {
     await stub.putState(key, Buffer.from(JSON.stringify(json)));
     console.log('============= END : Activity ===========');
   }
+  async modifyActivity(stub, args) {
+    console.log('============= Inicio Creación de producto ===========');
+    console.log('##### Modificacion Pedido : ' + JSON.stringify(args));
 
+    // args is passed as a JSON string
+    let json = JSON.parse(args);
+    let key = 'activity' + json['activity'];
+    json['docType'] = 'activity';
+
+    console.log('##### CrearProducto payload: ' + JSON.stringify(json));
+
+    // Check if the donor already exists
+    let donorQuery = await stub.getState(key);
+    if (!donorQuery.toString()) {
+      throw new Error('##### Modificar Producto - Este producto no está registrado: ' + json['activityId']);
+    }
+
+    await stub.putState(key, Buffer.from(JSON.stringify(json)));
+    console.log('============= END : createAsset ===========');
+  }
   /**
    * Retrieves a specfic donation
    * 
